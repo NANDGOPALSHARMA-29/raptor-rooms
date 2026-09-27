@@ -1,0 +1,155 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f5f9;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Join Screen */
+#join-screen {
+    width: 90%;
+    max-width: 400px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#join-screen h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+#join-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Chat Screen */
+#chat-screen {
+    width: 90%;
+    max-width: 650px;
+    height: 80vh;
+    min-height: 450px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#chat-screen h2 {
+    font-size: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#messages {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px;
+}
+
+.message {
+    background-color: #e5e7eb;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-wrap: anywhere;
+}
+
+.message .username {
+    display: block;
+    color: #2563eb;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.message .text {
+    font-size: 15px;
+}
+
+#chat-form {
+    display: flex;
+    gap: 10px;
+}
+
+#message-input {
+    flex: 1;
+    min-width: 0;
+}
+
+#send-btn {
+    flex-shrink: 0;
+}
+
+/* Notification */
+.notification {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    padding: 8px;
+    background-color: #f1f5f9;
+    border-radius: 5px;
+    margin: 4px auto;
+    max-width: 100%;
+}
+
+#chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#online-count {
+    color: green;
+    font-size: 14px;
+}
+
+
+/* Mobile */
+@media (max-width: 500px) {
+    #chat-screen {
+        height: 90vh;
+        padding: 15px;
+    }
+
+    #join-screen {
+        padding: 20px;
+    }
+}
