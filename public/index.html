@@ -1,28 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raptor V1</title>
+    <title>Raptor Rooms</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
+    <!-- Username Screen -->
     <div id="join-screen">
-        <h1>Global Chat</h1>
+        <h1>Raptor Rooms</h1>
         <input type="text" id="username" placeholder="Enter your name">
-        <button id="join-btn">Join Chat</button>
+        <button id="join-btn">Continue</button>
     </div>
 
+    <!-- Room Selection Screen -->
+    <div id="room-screen" style="display: none;">
+        <h2>Create a Room</h2>
+        <input type="text" id="create-room-input" placeholder="Enter room name">
+        <button id="create-room-btn">Create Room</button>
+
+        <h2>Join a Room</h2>
+        <input type="text" id="join-room-input" placeholder="Enter room name">
+        <button id="join-room-btn">Join Room</button>
+    </div>
+
+    <!-- Chat Screen -->
     <div id="chat-screen" style="display: none;">
         <div id="chat-header">
-            <h2>Global Chat</h2>
+            <h2>Room: <span id="current-room"></span></h2>
             <p id="online-count">🟢 Online: 0</p>
         </div>
+
         <div id="messages"></div>
 
         <form id="chat-form">
-            <input type="text" id="message-input" placeholder="Type a message" autocomplete="off">
+            <input
+                type="text"
+                id="message-input"
+                placeholder="Type a message"
+                autocomplete="off"
+            >
             <button type="submit" id="send-btn">Send</button>
         </form>
     </div>
