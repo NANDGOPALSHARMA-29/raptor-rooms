@@ -2,13 +2,30 @@ const express = require("express");
 const http = require("http");
 const WebSocket = require("ws");
 const path = require("path");
+require("dotenv").config();
+const mongoose = require("mongoose");
+
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({server});
 const rooms = new Map();
 
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("MongoDB connected");
+    })
+    .catch((error) => {
+        console.error("MongoDB connection failed:", error);
+    });
+
+
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
+const authRoutes = require("./routes/authRoutes");
+app.use("/api/auth", authRoutes);
+
 
 function createRoom(roomName) {
     if (rooms.has(roomName)) {
@@ -78,7 +95,6 @@ function sendRoomOnlineCount(roomName){
 
 wss.on("connection",(ws)=>{
     console.log("New client connected...");
-
     ws.on("message", (message) => {
         const data = JSON.parse(message.toString());
         // Create Room
