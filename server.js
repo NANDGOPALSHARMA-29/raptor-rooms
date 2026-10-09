@@ -4,6 +4,8 @@ const WebSocket = require("ws");
 const path = require("path");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
 
 
 const app = express();
@@ -23,6 +25,8 @@ mongoose.connect(process.env.MONGO_URI)
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
+app.use(cookieParser());
+
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
@@ -95,8 +99,48 @@ function sendRoomOnlineCount(roomName){
 
 wss.on("connection",(ws)=>{
     console.log("New client connected...");
+    ws.isAuthenticated = false;
     ws.on("message", (message) => {
         const data = JSON.parse(message.toString());
+
+        if (data.type === "authenticate") {
+                try {
+                    const decoded = jwt.verify(
+                        data.token,
+                        process.env.JWT_SECRET
+                    );
+                    ws.userId = decoded.userId;
+                    ws.username = decoded.username;
+                    ws.isAuthenticated = true;
+                    ws.send(JSON.stringify({
+                        type: "authenticated",
+                        message: "WebSocket authentication successful",
+                        user: {
+                            id: ws.userId,
+                            username: ws.username
+                        }
+                    }));
+                    console.log(
+                        `${ws.username} authenticated successfully`
+                    );
+                } catch (error) {
+                    ws.send(JSON.stringify({
+                        type: "error",
+                        message: "Invalid or expired token"
+                    }));
+                    ws.close();
+                }
+                return;
+            }
+            // Authentication required
+            if (!ws.isAuthenticated) {
+                ws.send(JSON.stringify({
+                    type: "error",
+                    message: "Please authenticate first"
+                }));
+                return;
+            }
+
         // Create Room
         if (data.type === "createRoom") {
             const roomName = data.roomName.trim();
@@ -146,10 +190,10 @@ wss.on("connection",(ws)=>{
             return;
         }
     // Join notification
-        if (data.type === "join") {
-            ws.username = data.username;
-            return;
-        }
+        // if (data.type === "join") {
+        //     ws.username = data.username;
+        //     return;
+        // }
     // Normal chat message
         // Normal chat message
         if (data.type === "chat") {

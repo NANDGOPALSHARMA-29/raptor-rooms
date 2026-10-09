@@ -1,52 +1,66 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raptor Rooms</title>
-    <link rel="stylesheet" href="./style.css">
+
+    <title>Raptor Rooms - Login</title>
+
+    <link rel="stylesheet" href="./css/auth.css">
 </head>
+
 <body>
-
-    <!-- Username Screen -->
-    <div id="join-screen">
+    <div id="auth-screen">
         <h1>Raptor Rooms</h1>
-        <input type="text" id="username" placeholder="Enter your name">
-        <button id="join-btn">Continue</button>
-    </div>
-
-    <!-- Room Selection Screen -->
-    <div id="room-screen" style="display: none;">
-        <h2>Create a Room</h2>
-        <input type="text" id="create-room-input" placeholder="Enter room name">
-        <button id="create-room-btn">Create Room</button>
-
-        <h2>Join a Room</h2>
-        <input type="text" id="join-room-input" placeholder="Enter room name">
-        <button id="join-room-btn">Join Room</button>
-    </div>
-
-    <!-- Chat Screen -->
-    <div id="chat-screen" style="display: none;">
-        <div id="chat-header">
-            <h2>Room: <span id="current-room"></span></h2>
-            <p id="online-count">🟢 Online: 0</p>
-        </div>
-
-        <div id="messages"></div>
-
-        <form id="chat-form">
+        <!-- Login -->
+        <div id="login-section">
+            <h2>Login</h2>
             <input
                 type="text"
-                id="message-input"
-                placeholder="Type a message"
-                autocomplete="off"
+                id="login-username"
+                placeholder="Username"
+                autocomplete="username"
             >
-            <button type="submit" id="send-btn">Send</button>
-        </form>
-    </div>
+            <input
+                type="password"
+                id="login-password"
+                placeholder="Password"
+                autocomplete="current-password"
+            >
+            <button id="login-btn"> Login </button>
+            <p> Don't have an account? <button id="show-register-btn"> Register </button> </p>
+        </div>
 
-    <script src="./script.js"></script>
+
+        <!-- Register -->
+        <div id="register-section" style="display: none;">
+            <h2>Register</h2>
+
+            <input
+                type="text"
+                id="register-username"
+                placeholder="Username"
+                autocomplete="username"
+            >
+
+            <input
+                type="password"
+                id="register-password"
+                placeholder="Password"
+                autocomplete="new-password"
+            >
+            <button id="register-btn">
+                Register
+            </button>
+            <p>
+                Already have an account?
+                <button id="show-login-btn">
+                    Login
+                </button>
+            </p>
+        </div>
+    </div>
+    <script src="./js/auth.js"></script>
 </body>
 </html>
