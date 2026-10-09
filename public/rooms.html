@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raptor Rooms - Rooms</title>
+    <link rel="stylesheet" href="./css/rooms.css">
+</head>
+<body>
+    <header>
+        <h1>Raptor Rooms</h1>
+        <p>Welcome, <span id="current-user">Loading...</span></p>
+    </header>
+
+    <main>
+        <section id="room-screen" style="display: none;">
+            <h2>Select Your Room</h2>
+
+            <label for="create-room-input">Create a new room</label>
+            <input
+                type="text"
+                id="create-room-input"
+                placeholder="Enter room name"
+                maxlength="50"
+            >
+            <button id="create-room-btn">Create Room</button>
+
+            <label for="join-room-input">Join an existing room</label>
+            <input
+                type="text"
+                id="join-room-input"
+                placeholder="Enter room name"
+                maxlength="50"
+            >
+            <button id="join-room-btn">Join Room</button>
+
+            <p id="room-status" role="status"></p>
+        </section>
+    </main>
+
+    <script src="./js/rooms.js" defer></script>
+</body>
+</html>

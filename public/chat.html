@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raptor Rooms - Chat</title>
+    <link rel="stylesheet" href="./css/chat.css">
+</head>
+<body>
+    <header>
+        <h1>Raptor Rooms</h1>
+        <p>Logged in as <span id="current-user">Loading...</span></p>
+    </header>
+
+    <main id="chat-screen">
+        <section class="chat-header">
+            <h2>Room: <span id="current-room"></span></h2>
+            <p id="online-count">🟢 Online: 0</p>
+        </section>
+
+        <section
+            id="messages"
+            aria-live="polite"
+            aria-label="Chat messages"
+        ></section>
+
+        <form id="chat-form">
+            <input
+                type="text"
+                id="message-input"
+                placeholder="Type a message..."
+                maxlength="2000"
+                autocomplete="off"
+            >
+            <button type="submit">Send</button>
+        </form>
+
+        <button id="back-to-rooms-btn">Back to Rooms</button>
+        <p id="chat-status" role="status"></p>
+    </main>
+
+    <script src="./js/chat.js" defer></script>
+</body>
+</html>
