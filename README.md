@@ -2,6 +2,8 @@
 
 ### A Room-Based Real-Time Messaging System Built with Node.js & WebSockets
 
+🚀 Live Demo: https://raptor-chatapp.onrender.com/
+
 **Raptor** is a real-time chat application designed to explore the engineering behind interactive communication systems. It combines secure authentication, room-based messaging, WebSocket communication, and backend room management, with a roadmap toward scalable, distributed real-time infrastructure.
 
 The current version provides a working foundation for real-time communication. Future iterations will focus on Redis-based cross-instance communication, horizontal scaling, load balancing, and performance optimization.
@@ -129,7 +131,7 @@ raptor-chatapp/
 ### 1. Clone the Repository
 
 ```bash
-git clone <YOUR_GITHUB_REPOSITORY_URL>
+git clone https://github.com/NANDGOPALSHARMA-29/raptor-rooms
 cd raptor-chatapp
 ```
 
